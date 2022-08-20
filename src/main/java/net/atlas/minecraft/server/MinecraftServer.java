@@ -8,12 +8,15 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import net.atlas.minecraft.common.registry.Registries;
 
 public class MinecraftServer {
+    public static final Registries registries = new Registries();
 
     private static int port = 35566;
 
     public static void main(String[] args) {
+        registries.init();
         try{
             run();
         }catch (Exception e) {
