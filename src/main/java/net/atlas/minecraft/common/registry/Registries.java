@@ -28,6 +28,7 @@ public class Registries {
     }
     public void init(Logger logger) {
         logger.log(Level.INFO, WoodenSword().getID().ID);
+        logger.log(Level.INFO, Air().getID().ID);
         logger.log(Level.INFO, "Fireproof: " + WoodenSword().get(1).isFireproof());
     }
 }

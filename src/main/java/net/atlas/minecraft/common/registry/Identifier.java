@@ -7,23 +7,19 @@ public class Identifier {
     public final String PATH;
     Identifier(String name, int index) {
         RAW_ID = index;
-        ID = name;
         int i = name.indexOf(':');
-        String[] strings = new String[]{name.substring(0, i), name.substring(i + 1, name.length())};
-        String namespace = strings[0];
-        String path = strings[1];
-        NAMESPACE = namespace;
-        PATH = path;
+        String[] strings = i >= 1 ? new String[]{name.substring(0, i), name.substring(i + 1)} : i == 0 ? new String[]{"minecraft", name.substring(i + 1)} : new String[]{"minecraft", name};
+        NAMESPACE = strings[0];
+        PATH = strings[1];
+        ID = NAMESPACE + ":" + PATH;
     }
     Identifier(String name, int index, char delimiter) {
         RAW_ID = index;
-        ID = name;
         int i = name.indexOf(delimiter);
-        String[] strings = i >= 1 ? new String[]{name.substring(0, i - 1), name.substring(i + 1)} : i == 0 ? new String[]{"minecraft", name.substring(i + 1)} : new String[]{"minecraft", name};
-        String namespace = strings[0];
-        String path = strings[1];
-        NAMESPACE = namespace;
-        PATH = path;
+        String[] strings = i >= 1 ? new String[]{name.substring(0, i), name.substring(i + 1)} : i == 0 ? new String[]{"minecraft", name.substring(i + 1)} : new String[]{"minecraft", name};
+        NAMESPACE = strings[0];
+        PATH = strings[1];
+        ID = NAMESPACE + ":" + PATH;
     }
     Identifier(String namespace, String path, int index) {
         RAW_ID = index;
