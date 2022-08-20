@@ -4,25 +4,29 @@ import net.atlas.minecraft.common.item.Item;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Registries {
     public static RegistryKey<Item> itemRegistry = new RegistryKey<>();
     public Registries() {
         Air();
         WoodenSword();
+        init(Logger.getGlobal());
     }
     @ItemRegistry()
-    public final Item Air() {
+    public final RegistryKey<Item> Air() {
         Item thisItem = new Item(new Item.Settings(false));
         itemRegistry.add("minecraft:air", 0, thisItem);
-        return thisItem;
+        return itemRegistry;
     }
     @ItemRegistry(addItem = "minecraft:wooden_sword")
-    public final Item WoodenSword() {
+    public final RegistryKey<Item> WoodenSword() {
         Item thisItem = new Item(new Item.Settings(false));
-        itemRegistry.add("minecraft:wooden_sword", 1, thisItem);
-        return thisItem;
+        itemRegistry.add("minecraft", "wooden_sword", 1, thisItem);
+        return itemRegistry;
     }
-    public static void init() {
+    public void init(Logger logger) {
+        logger.log(Level.INFO, WoodenSword().ID.ID);
     }
 }

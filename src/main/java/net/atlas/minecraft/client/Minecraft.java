@@ -13,6 +13,7 @@ import org.lwjgl.opengl.GL;
 import org.lwjgl.system.MemoryStack;
 
 import java.nio.IntBuffer;
+import java.util.logging.Logger;
 
 import static org.lwjgl.glfw.Callbacks.*;
 import static org.lwjgl.glfw.GLFW.*;
@@ -29,7 +30,6 @@ public class Minecraft {
     private static final TestListener testListener1 = new TestListener();
 
     public static void main(String[] argv) {
-        registries.init();
 
         EventManager.ERROR_POLICY = EventScopeException.EXCEPTION;
         EventManager.registerListeners(testListener1);

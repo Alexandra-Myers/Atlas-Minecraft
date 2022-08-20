@@ -16,7 +16,6 @@ public class MinecraftServer {
     private static int port = 35566;
 
     public static void main(String[] args) {
-        registries.init();
         try{
             run();
         }catch (Exception e) {
