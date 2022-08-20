@@ -1,6 +1,7 @@
 package net.atlas.minecraft.common.item;
 
 import net.atlas.minecraft.common.registry.RegistryKey;
+import org.jetbrains.annotations.Nullable;
 
 public class Item implements ItemLike {
     public final RegistryKey<Boolean> boolProperties;
@@ -17,6 +18,15 @@ public class Item implements ItemLike {
     }
 
     public static class Settings {
+//        public int maxStackSize = 64;
+//        int maxDamage;
+//        @Nullable
+//        Item craftingRemainingItem;
+//        @Nullable
+//        CreativeModeTab category;
+//        Rarity rarity = Rarity.COMMON;
+//        @Nullable
+//        FoodProperties foodProperties;
         public final RegistryKey<Boolean> boolSettings;
         public Settings(boolean fireproof) {
             this.boolSettings = new RegistryKey<>();
