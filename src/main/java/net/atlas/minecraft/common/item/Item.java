@@ -1,16 +1,28 @@
 package net.atlas.minecraft.common.item;
 
-public class Item {
-    public final Boolean[] boolProperties;
+import net.atlas.minecraft.common.registry.RegistryKey;
+
+public class Item implements ItemLike {
+    public final RegistryKey<Boolean> boolProperties;
     public Item(Settings settings) {
         this.boolProperties = settings.getBoolSettings();
     }
+    public boolean isFireproof() {
+        return boolProperties.get(0);
+    }
+
+    @Override
+    public Item asItem() {
+        return this;
+    }
+
     public static class Settings {
-        public final Boolean[] boolSettings;
+        public final RegistryKey<Boolean> boolSettings;
         public Settings(boolean fireproof) {
-            this.boolSettings = new Boolean[] {fireproof};
+            this.boolSettings = new RegistryKey<>();
+            boolSettings.addProperty("minecraft:fireproof", 0, fireproof);
         }
-        public Boolean[] getBoolSettings() {
+        public RegistryKey<Boolean> getBoolSettings() {
             return boolSettings;
         }
     }
