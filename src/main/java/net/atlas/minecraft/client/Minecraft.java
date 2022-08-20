@@ -2,6 +2,10 @@ package net.atlas.minecraft.client;
 
 
 
+import net.atlas.minecraft.common.event.EventManager;
+import net.atlas.minecraft.common.event.events.TestEventBase;
+import net.atlas.minecraft.common.event.events.TestListener;
+import net.atlas.minecraft.common.event.exception.EventScopeException;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
@@ -20,7 +24,15 @@ public class Minecraft {
     // The window handle
     private static long window;
 
+    private static final TestListener testListener1 = new TestListener();
+
     public static void main(String[] argv) {
+
+        EventManager.ERROR_POLICY = EventScopeException.EXCEPTION;
+        EventManager.registerListeners(testListener1);
+
+        EventManager.callEvent(new TestEventBase(42));
+
         init();
         loop();
 
