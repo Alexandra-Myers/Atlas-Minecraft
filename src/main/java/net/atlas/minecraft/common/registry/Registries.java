@@ -36,6 +36,8 @@ public class Registries {
                 method.setAccessible(true);
                 method.invoke(object);
                 itemRegistry.add(method.getAnnotation(ItemRegistry.class).addItem(), method.getAnnotation(ItemRegistry.class).addID());
+                Logger.getGlobal().log(Level.INFO, "Name: " + method.getAnnotation(ItemRegistry.class).addItem());
+                Logger.getGlobal().log(Level.INFO, "Raw ID: " + method.getAnnotation(ItemRegistry.class).addID());
             }
         }
     }
