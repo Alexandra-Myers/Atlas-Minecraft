@@ -27,6 +27,12 @@ public class Registries {
         itemRegistry.setElement(thisItem);
         return itemRegistry;
     }
+    @ItemRegistry(addItem = "minecraft:stone_sword", addID = 2)
+    public final RegistryKey<Item> StoneSword() {
+        Item thisItem = new Item(new Item.Settings(false));
+        itemRegistry.setElement(thisItem);
+        return itemRegistry;
+    }
     public void init(Logger logger) {
     }
     private void initializeObject(Object object) throws Exception {
