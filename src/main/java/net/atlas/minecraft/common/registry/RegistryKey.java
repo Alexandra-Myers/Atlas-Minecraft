@@ -3,7 +3,7 @@ package net.atlas.minecraft.common.registry;
 import java.util.ArrayList;
 
 public class RegistryKey<T> extends ArrayList<T> {
-    private Identifier ID;
+    private Identifier<T> ID;
     public RegistryKey() {
 
     }
@@ -15,7 +15,7 @@ public class RegistryKey<T> extends ArrayList<T> {
         ID = new Identifier<T>(namespace, path, index, (T) element.getClass());
         super.add(index, element);
     }
-    public Identifier getID() {
+    public Identifier<T> getID() {
         return ID;
     }
 }
