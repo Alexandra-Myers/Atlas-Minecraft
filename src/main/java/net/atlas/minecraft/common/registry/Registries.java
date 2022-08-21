@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Registries {
-    public static RegistryKey<Item> itemRegistry = new RegistryKey<>(40);
+    public static RegistryKey<Item> itemRegistry = new RegistryKey<>(100);
     public Registries() throws Exception {
         initializeObject(this);
         init(Logger.getGlobal());
