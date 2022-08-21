@@ -2,10 +2,7 @@ package net.atlas.minecraft.common.registry;
 
 import net.atlas.minecraft.common.item.Item;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

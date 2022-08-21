@@ -1,11 +1,6 @@
 package net.atlas.minecraft.common.item;
 
-import net.atlas.minecraft.common.registry.ItemRegistry;
 import net.atlas.minecraft.common.registry.RegistryKey;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Item implements ItemLike {
     public final RegistryKey<Boolean> boolProperties;
