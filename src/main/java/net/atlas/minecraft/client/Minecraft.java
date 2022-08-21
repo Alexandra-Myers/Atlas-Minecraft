@@ -25,7 +25,15 @@ public class Minecraft {
 
     // The window handle
     private static long window;
-    public static final Registries registries = new Registries();
+    public static final Registries registries;
+
+    static {
+        try {
+            registries = new Registries();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private static final TestListener testListener1 = new TestListener();
 

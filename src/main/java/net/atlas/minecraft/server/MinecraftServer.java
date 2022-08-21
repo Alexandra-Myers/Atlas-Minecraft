@@ -11,7 +11,15 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import net.atlas.minecraft.common.registry.Registries;
 
 public class MinecraftServer {
-    public static final Registries registries = new Registries();
+    public static final Registries registries;
+
+    static {
+        try {
+            registries = new Registries();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private static int port = 35566;
 

@@ -39,7 +39,8 @@ public class Item implements ItemLike {
             Fireproof();
         }
         public final RegistryKey<Boolean> Fireproof() {
-            boolSettings.add("minecraft:fireproof", 0, isFireproof);
+            boolSettings.setElement(isFireproof);
+            boolSettings.add("minecraft:fireproof", 0);
             return boolSettings;
         }
         public RegistryKey<Boolean> getBoolSettings() {
