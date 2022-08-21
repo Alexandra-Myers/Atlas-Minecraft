@@ -35,7 +35,7 @@ public class Registries {
     }
     public void init(Logger logger) {
     }
-    private void initializeObject(Object object) throws Exception {
+    public void initializeObject(Object object) throws Exception {
         Class<?> clazz = object.getClass();
         for (Method method : clazz.getDeclaredMethods()) {
             if (method.isAnnotationPresent(ItemRegistry.class)) {
