@@ -28,9 +28,6 @@ public class Registries {
         return itemRegistry;
     }
     public void init(Logger logger) {
-        logger.log(Level.INFO, "Type: " + Air().ID.type);
-        logger.log(Level.INFO, "Type: " + WoodenSword().ID.type);
-        logger.log(Level.INFO, "Fireproof: " + WoodenSword().get(1).isFireproof());
     }
     private void initializeObject(Object object) throws Exception {
         Class<?> clazz = object.getClass();
