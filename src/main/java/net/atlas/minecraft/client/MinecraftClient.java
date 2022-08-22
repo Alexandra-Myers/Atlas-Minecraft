@@ -9,11 +9,23 @@ import net.atlas.minecraft.common.event.events.TestListener;
 import net.atlas.minecraft.common.event.exception.EventScopeException;
 import net.atlas.minecraft.common.registry.Registries;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class MinecraftClient {
 
     public static Window window = new Window(1080,720,"Minecraft");
 
-    public static final Registries registries = new Registries();
+    public static final Registries registries;
+
+    static {
+        try {
+            registries = new Registries();
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private static final TestListener testListener1 = new TestListener();
 
