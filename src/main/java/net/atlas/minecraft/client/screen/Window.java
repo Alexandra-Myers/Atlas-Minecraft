@@ -3,6 +3,12 @@ package net.atlas.minecraft.client.screen;
 import net.atlas.minecraft.client.camera.Camera;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.opengl.GL;
+
+import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.opengl.GL11C.GL_FALSE;
+import static org.lwjgl.opengl.GL11C.GL_TRUE;
+import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window {
 
@@ -20,40 +26,19 @@ public class Window {
     }
 
     public void initWindow() {
-        GLFW.glfwInit();
-        window = GLFW.glfwCreateWindow(width,height,title,GLFW.GLFW_PLATFORM_NULL,0);
+        glfwInit();
 
-        if(window == 0) {
-            throw new RuntimeException("GLFW Window could not be initialized");
-        }
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 
-        GLFWVidMode videoMode = GLFW.glfwGetVideoMode(GLFW.glfwGetPrimaryMonitor());
+        window = glfwCreateWindow(width, height, title, 0, 0);
+        glfwMakeContextCurrent(window);
+        GL.createCapabilities();
 
-        GLFW.glfwSetWindowPos(window,(videoMode.width() - this.width) / 2,(videoMode.height() - this.height));
-
-        GLFW.glfwMakeContextCurrent(window);
-
-        GLFW.glfwShowWindow(window);
-
-        GLFW.glfwSwapInterval(1);
+        glfwShowWindow(window);
 
         camera = new Camera(0,0,0);
-
-        while(true) {
-            update();
-            render();
-        }
-    }
-
-    public void update() {
-        GLFW.glfwPollEvents();
-    }
-
-    public void render() {
-        swapBuffers();
-    }
-
-    public void swapBuffers() {
-        GLFW.glfwSwapBuffers(window);
     }
 }
