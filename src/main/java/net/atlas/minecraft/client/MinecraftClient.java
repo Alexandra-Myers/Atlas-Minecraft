@@ -13,8 +13,6 @@ public class MinecraftClient {
 
     public static Window window = new Window(1080,720,"Minecraft");
 
-    public static final Registries registries = new Registries();
-
     private static final TestListener testListener1 = new TestListener();
 
     public static void main(String[] argv) {

@@ -12,8 +12,6 @@ import net.atlas.minecraft.server.networking.ServerPacketListener;
 import net.atlas.minecraft.server.networking.connection.ClientConnection;
 
 public class MinecraftServer {
-    public static final Registries registries = new Registries();
-
     private static int port = 35566;
     public static ThreadGroup ServerThreadGroup = new ThreadGroup("ServerThreadGroup");
 
