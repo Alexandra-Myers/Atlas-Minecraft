@@ -123,6 +123,8 @@ dependencies {
     runtimeOnly "org.lwjgl:lwjgl-xxhash::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-yoga::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-zstd::$lwjglNatives"
+
+    implementation group: 'org.joml', name: 'joml', version: '1.10.4'
 }
 
 allprojects {
