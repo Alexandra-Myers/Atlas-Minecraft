@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Registries {
-    public static RegistryKey<Item> itemRegistry = new RegistryKey<>(10000);
+    public static RegistryKey<Item> itemRegistry = new RegistryKey<>(2);
     public Registries() throws InvocationTargetException, IllegalAccessException {
         initializeObject(this);
         init(Logger.getGlobal());
@@ -19,19 +19,20 @@ public class Registries {
         itemRegistry.setElement(thisItem);
         return itemRegistry;
     }
-    @ItemRegistry(addItem = "minecraft:wooden_sword", addID = 1)
+    @ItemRegistry(addItem = "minecraft:wooden_sword")
     public final RegistryKey<Item> WoodenSword() {
         Item thisItem = new Item(new Item.Settings(false));
         itemRegistry.setElement(thisItem);
         return itemRegistry;
     }
-    @ItemRegistry(addItem = "minecraft:stone_sword", addID = 2)
+    @ItemRegistry(addItem = "minecraft:stone_sword")
     public final RegistryKey<Item> StoneSword() {
         Item thisItem = new Item(new Item.Settings(false));
         itemRegistry.setElement(thisItem);
         return itemRegistry;
     }
     public void init(Logger logger) {
+
     }
     public void initializeObject(Object object) throws InvocationTargetException, IllegalAccessException {
         Class<?> clazz = object.getClass();
@@ -39,7 +40,7 @@ public class Registries {
             if (method.isAnnotationPresent(ItemRegistry.class)) {
                 method.setAccessible(true);
                 method.invoke(object);
-                itemRegistry.add(method.getAnnotation(ItemRegistry.class).addItem(), method.getAnnotation(ItemRegistry.class).addID());
+                itemRegistry.add(method.getAnnotation(ItemRegistry.class).addItem());
                 Logger.getGlobal().log(Level.INFO, "Name: " + method.getAnnotation(ItemRegistry.class).addItem());
                 Logger.getGlobal().log(Level.INFO, "Raw ID: " + method.getAnnotation(ItemRegistry.class).addID());
             }

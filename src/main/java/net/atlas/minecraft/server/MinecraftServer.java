@@ -14,7 +14,15 @@ import net.atlas.minecraft.server.networking.connection.ClientConnection;
 public class MinecraftServer {
     private static int port = 35566;
     public static ThreadGroup ServerThreadGroup = new ThreadGroup("ServerThreadGroup");
+    public static final Registries registries;
 
+    static {
+        try {
+            registries = new Registries();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     public static void main(String[] args) {
         try{
             run();
